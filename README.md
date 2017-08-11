@@ -1,12 +1,4 @@
-# docker-dashkiosk ![License][license-img]
-
-1. [Overview](#overview)
-2. [Description](#module-description)
-3. [Setup](#setup)
-4. [Usage](#usage)
-5. [Limitations](#limitations)
-6. [Development](#development)
-7. [Miscellaneous](#miscellaneous)
+# docker-dashkiosk ![License][license-img] [![Docker][docker-img]][docker-url]
 
 ## Overview
 
@@ -18,9 +10,15 @@ Dashkiosk is a solution to manage dashboards on multiple screens.
 
 Docker images of Dashkiosk.
 
+## Tags
+
+Supported tags and respective Dockerfile links.
+
+- latest ([Dockerfile][1])
+
 ## Setup
 
-TODO
+Soon :)
 
 ## Usage
 
@@ -44,13 +42,11 @@ docker run --entrypoint bash --interactive --rm --tty dashkiosk
 
 ## Limitations
 
-TODO
+Soon :)
 
 ## Development
 
-Please read carefully [CONTRIBUTING.md]
-(https://git.vpgrp.io/docker/docker-rules/raw/master/CONTRIBUTING.md)
-before making a merge request.
+Feel free to contribute on GitHub.
 
 ## Miscellaneous
 
@@ -64,4 +60,7 @@ before making a merge request.
    ╚═(███)═╝
 ```
 
-[license-img]: https://img.shields.io/badge/license-Apache-blue.svg
+[1]: https://github.com/rockyluke/docker-dashkiosk/blob/master/Dockerfile
+[license-img]: https://img.shields.io/badge/license-ISC-blue.svg
+[docker-img]: https://img.shields.io/docker/pulls/rockyluke/dashkiosk.svg
+[docker-url]: https://registry.hub.docker.com/u/rockyluke/dashkiosk
