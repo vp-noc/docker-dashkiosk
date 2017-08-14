@@ -26,6 +26,7 @@ RUN apt-get update -qq && \
 
 RUN git clone https://github.com/vincentbernat/dashkiosk /opt/dashkiosk && \
     cd /opt/dashkiosk && \
+    sed s/'col-md-6'/'col-md-3'/g -i /opt/dashkiosk/app/views/groups.html && \
     npm --loglevel=error install --global bower grunt-cli && \
     npm --loglevel=error install && \
     grunt
