@@ -18,15 +18,18 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV TZ Europe/Amsterdam
 ENV NPM_CONFIG_LOGLEVEL warn
 
-RUN apt-get update -qq && \
+RUN apt-get update  -qq && \
     apt-get upgrade -qq -y && \
     apt-get install -qq -y \
-      python && \
+      python \
+      build-essential \
+      libavahi-compat-libdnssd-dev && \
     apt-clean
 
 RUN git clone https://github.com/vincentbernat/dashkiosk /opt/dashkiosk && \
     cd /opt/dashkiosk && \
     sed s/'col-md-6'/'col-md-3'/g -i /opt/dashkiosk/app/views/groups.html && \
+    sed '28i\@container-lg: 2000px;' -i /opt/dashkiosk/app/styles/admin.less && \
     npm --loglevel=error install --global bower grunt-cli && \
     npm --loglevel=error install && \
     grunt
