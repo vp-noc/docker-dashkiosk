@@ -22,12 +22,14 @@ RUN apt-get update  -qq && \
     apt-get upgrade -qq -y && \
     apt-get install -qq -y \
       python \
-      build-essential \
-      libavahi-compat-libdnssd-dev && \
+      build-essential && \
     apt-clean
 
-RUN git clone https://github.com/vincentbernat/dashkiosk /opt/dashkiosk && \
-    cd /opt/dashkiosk && \
+RUN git clone https://github.com/vp-noc/dashkiosk /opt/dashkiosk
+
+ADD files /opt/dashkiosk
+
+RUN cd /opt/dashkiosk && \
     sed s/'col-md-6'/'col-md-3'/g -i /opt/dashkiosk/app/views/groups.html && \
     sed '28i\@container-lg: 2000px;' -i /opt/dashkiosk/app/styles/admin.less && \
     npm --loglevel=error install --global bower grunt-cli && \
@@ -42,5 +44,5 @@ WORKDIR /opt/dashkiosk
 
 ENTRYPOINT [ "/usr/bin/node", "/opt/dashkiosk/dist/server.js" ]
 
-CMD [ "--environment", "production", "--port", "8080" ]
+CMD [ "--environment", "production", "--port", "8080", "--branding", "vpgrp" ]
 # EOF
