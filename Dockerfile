@@ -22,7 +22,8 @@ RUN apt-get update  -qq && \
     apt-get upgrade -qq -y && \
     apt-get install -qq -y \
       python \
-      build-essential && \
+      build-essential \
+      libavahi-compat-libdnssd-dev && \
     apt-clean
 
 RUN git clone https://github.com/vp-noc/dashkiosk /opt/dashkiosk
@@ -44,5 +45,5 @@ WORKDIR /opt/dashkiosk
 
 ENTRYPOINT [ "/usr/bin/node", "/opt/dashkiosk/dist/server.js" ]
 
-CMD [ "--environment", "production", "--port", "8080", "--branding", "vpgrp" ]
+CMD [ "--environment", "production", "--port", "8080" ]
 # EOF
