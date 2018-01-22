@@ -14,9 +14,8 @@
 
 FROM rockyluke/nodejs:latest
 
-ENV DEBIAN_FRONTEND noninteractive
-ENV TZ Europe/Amsterdam
-ENV NPM_CONFIG_LOGLEVEL warn
+ENV DEBIAN_FRONTEND="noninteractive" \
+    TZ="Europe/Amsterdam" \
 
 RUN apt-get update  -qq && \
     apt-get upgrade -qq -y && \
