@@ -20,6 +20,7 @@ lines-length:
     - >
       bash <(curl -s
       https://gitlab.com/yue-script/checks/raw/master/check_lines_length.sh)
+      80 *.html *.jpeg *.jpg *.png
 
 # syntax
 docker-lint:
