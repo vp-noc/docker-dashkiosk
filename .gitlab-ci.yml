@@ -1,28 +1,36 @@
 ---
-dockerlint:
-  tags:
-    - default
-  image: vpgrp/nodejs:latest
-  before_script:
-    - npm install -g dockerlint
+# https://docs.gitlab.com/ee/ci/docker/using_docker_build.html
+
+stages:
+  - commit
+  - syntax
+  - docker
+
+# commit
+git-history:
+  stage: commit
+  script:
+    - >
+      bash <(curl -s
+      https://gitlab.com/yue-script/checks/raw/master/check_git_history.sh)
+
+lines-length:
+  stage: commit
+  script:
+    - >
+      bash <(curl -s
+      https://gitlab.com/yue-script/checks/raw/master/check_lines_length.sh)
+
+# syntax
+docker-lint:
+  stage: syntax
+  image: vpgrp/linter:docker
   script:
     - dockerlint Dockerfile
 
-yamllint:
-  tags:
-    - default
-  image: vpgrp/debian:stretch
-  before_script:
-    - >
-      apt-get update -qq -y &&
-      apt-get install -qq -y python3 python3-pkg-resources yamllint
-  script:
-    - yamllint .gitlab-ci.yml
-    - yamllint docker-compose.yml
-
-docker-compose:
-  tags:
-    - default
+# docker
+build-dashkiosk:
+  stage: docker
   image: docker:latest
   services:
     - docker:dind
