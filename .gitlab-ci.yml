@@ -14,13 +14,13 @@ git-history:
       bash <(curl --fail --location --silent --show-error
       https://git.io/vxIxF)
 
-lines-length:
-  stage: commit
-  script:
-    - >
-      bash <(curl --fail --location --silent --show-error
-      https://git.io/vxIxN)
-      80 *.html *.jpeg *.jpg *.png
+# lines-length:
+#   stage: commit
+#   script:
+#     - >
+#       bash <(curl --fail --location --silent --show-error
+#       https://git.io/vxIxN)
+#       80 *.html *.jpeg *.jpg *.png
 
 # syntax
 docker-lint:
