@@ -11,15 +11,15 @@ git-history:
   stage: commit
   script:
     - >
-      bash <(curl -s
-      https://gitlab.com/yue-script/checks/raw/master/check_git_history.sh)
+      bash <(curl --fail --location --silent --show-error
+      https://git.io/vxIxF)
 
 lines-length:
   stage: commit
   script:
     - >
-      bash <(curl -s
-      https://gitlab.com/yue-script/checks/raw/master/check_lines_length.sh)
+      bash <(curl --fail --location --silent --show-error
+      https://git.io/vxIxN)
       80 *.html *.jpeg *.jpg *.png
 
 # syntax
@@ -27,10 +27,10 @@ docker-lint:
   stage: syntax
   image: vpgrp/linter:docker
   script:
-    - dockerlint Dockerfile
+    - find . -type f -name "Dockerfile" | xargs -I{} dockerlint {}
 
 # docker
-build-dashkiosk:
+build-latest:
   stage: docker
   image: docker:latest
   services:

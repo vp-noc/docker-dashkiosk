@@ -25,9 +25,10 @@ RUN apt-get update  -qq && \
       libavahi-compat-libdnssd-dev && \
     apt-clean
 
-RUN git clone https://github.com/vp-noc/dashkiosk /opt/dashkiosk
+RUN git clone https://github.com/vp-noc/dashkiosk \
+      /opt/dashkiosk
 
-ADD files /opt/dashkiosk
+ADD files /
 
 RUN cd /opt/dashkiosk && \
     sed s/'col-md-6'/'col-md-3'/g \
