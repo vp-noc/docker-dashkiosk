@@ -28,22 +28,26 @@ Supported tags.
 
 ## Usage
 
-### Start
+### SQLite
 
 ```bash
-docker-compose --project-name dashkiosk up -d
+docker run -it \
+  -v dashkiosk.sqlite:/opt/dashkiosk/db/dashkiosk.sqlite:rw \
+  -p 8080:8080 \
+  vpgrp/dashkiosk:latest
 ```
 
-### Stop
+### MySQL
 
 ```bash
-docker-compose --project-name dashkiosk down
-```
-
-### Debug
-
-```bash
-docker run --entrypoint bash --interactive --rm --tty dashkiosk
+docker run -it \
+--env db__username=USER \
+--env db__password=PASSWORD \
+--env db__database=DATABASE \
+--env db__options__host=HOST \
+--env db__options__dialect=mysql \
+-p 8080:8080 \
+vpgrp/dashkiosk:latest
 ```
 
 ## Limitations
