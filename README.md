@@ -28,6 +28,12 @@ Supported tags.
 
 ## Usage
 
+### Build
+
+```bash
+docker build . -t vpgrp/dashkiosk:latest
+```
+
 ### SQLite
 
 ```bash
@@ -41,13 +47,13 @@ docker run -it \
 
 ```bash
 docker run -it \
---env db__username=USER \
---env db__password=PASSWORD \
---env db__database=DATABASE \
---env db__options__host=HOST \
---env db__options__dialect=mysql \
--p 8080:8080 \
-vpgrp/dashkiosk:latest
+  --env db__username=USER \
+  --env db__password=PASSWORD \
+  --env db__database=DATABASE \
+  --env db__options__host=HOST \
+  --env db__options__dialect=mysql \
+  -p 8080:8080 \
+  vpgrp/dashkiosk:latest
 ```
 
 ## Limitations
