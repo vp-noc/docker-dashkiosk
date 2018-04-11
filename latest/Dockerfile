@@ -32,10 +32,6 @@ RUN git clone https://github.com/vp-noc/dashkiosk \
 ADD files /
 
 RUN cd /opt/dashkiosk && \
-    sed s/'col-md-6'/'col-md-3'/g \
-        -i /opt/dashkiosk/app/views/groups.html && \
-    sed '28i\@container-lg: 2000px;' \
-        -i /opt/dashkiosk/app/styles/admin.less && \
     npm --loglevel=error install --global bower grunt-cli && \
     npm --loglevel=error install && \
     grunt

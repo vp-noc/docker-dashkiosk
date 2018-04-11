@@ -10,5 +10,10 @@ fi
 # latest
 docker build --force-rm \
        --tag "${DOCKER_USER}/dashkiosk:latest" \
-       .
+       latest
+
+# wallscreen
+docker build --force-rm \
+       --tag "${DOCKER_USER}/dashkiosk:wallscreen" \
+       wallscreen
 # EOF
