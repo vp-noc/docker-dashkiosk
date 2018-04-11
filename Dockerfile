@@ -26,7 +26,8 @@ RUN apt-get update  -qq && \
     apt-clean
 
 RUN git clone https://github.com/vp-noc/dashkiosk \
-      /opt/dashkiosk
+      /opt/dashkiosk && \
+    rm /opt/dashkiosk/app/images/unassigned/*.jpg
 
 ADD files /
 
