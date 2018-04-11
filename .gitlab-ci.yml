@@ -38,5 +38,16 @@ build-latest:
   variables:
     DOCKER_DRIVER: overlay
   script:
-    - docker build --rm .
+    - docker build --rm latest
+
+# docker
+build-wallscreen:
+  stage: docker
+  image: docker:latest
+  services:
+    - docker:dind
+  variables:
+    DOCKER_DRIVER: overlay
+  script:
+    - docker build --rm wallscreen
 # EOF
