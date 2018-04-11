@@ -24,14 +24,15 @@ Dashkiosk packaged in Docker.
 
 Supported tags.
 
-- latest
+- [latest](/latest/README.md)
+- [wallscreen](/wallscreen/README.md)
 
 ## Usage
 
 ### Build
 
 ```bash
-docker build . -t vpgrp/dashkiosk:latest
+./build.sh vpgrp
 ```
 
 ### SQLite
