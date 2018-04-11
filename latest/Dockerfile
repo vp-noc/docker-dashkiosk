@@ -32,6 +32,7 @@ RUN git clone https://github.com/vp-noc/dashkiosk \
 ADD files /
 
 RUN cd /opt/dashkiosk && \
+    git checkout vente-privee-branding && \
     npm --loglevel=error install --global bower grunt-cli && \
     npm --loglevel=error install && \
     grunt
@@ -44,5 +45,5 @@ WORKDIR /opt/dashkiosk
 
 ENTRYPOINT [ "/usr/bin/node", "/opt/dashkiosk/dist/server.js" ]
 
-CMD [ "--environment", "production", "--port", "8080" ]
+CMD [ "--environment", "production", "--port", "8080", "--branding", "vente-privee" ]
 # EOF
